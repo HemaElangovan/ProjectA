@@ -1,0 +1,72 @@
+﻿@using System.Data
+@using System.Data.SqlClient
+@model System.Data.DataTable
+
+@{
+    ViewBag.Title = "AddDoctor";
+}
+
+<center><h3>ADD DOCTOR</h3></br></center>
+<style>
+    .bg {
+        font-size: medium;
+        background-image: url('../../clinic3.jfif');
+        height: 100%;
+        width: 100%;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        color: darkblue;
+    }
+</style>
+<body class="bg">
+    <div id="form" style="display:flex; justify-content:center; align-items:center;">
+        <form id="insert" method="post" action=@Url.Action("AddDocDetails")>
+            <div class="alignMe">
+                First Name      : <input type="text" name="txt_fname" required /> <br /><br />
+                Last Name       : <input type="text" name="txt_lname" required /><br /><br />
+                Sex             : <div class="btn-group" name="Choice">
+                    <input id="Gender" value="Male" type="radio" name="Choice" autocomplete="off" />Male
+                    <input value="Female" type="radio" name="Choice" autocomplete="off" />Female
+                    <input value="Others" type="radio" name="Choice" autocomplete="off" />Others
+                </div><br /><br />
+                Specialization  : <select name="dept" id="dept" required>
+                    <option value="General">General</option>
+                    <option value="InternalMedicine">Internal Medicine</option>
+                    <option value="Pediatrics">Pediatrics</option>
+                    <option value="Orthopedics">Orthopedics</option>
+                    <option value="Ophthamology">Ophthalmology</option>
+                </select><br /><br />
+                Available Time  : <input type="time" name="txt_Vhrs" required /><br /><br />
+            </div>
+            <input type="submit" value="Submit" name="action" required /></br>
+
+        </form>
+    </div>
+    <table align="center" border="2" cellpadding="2">
+        <thead>
+            <tr>
+                <td>Doctor_ID</td>
+                <td>First Name</td>
+                <td>Last Name</td>
+                <td>Gender</td>
+                <td>Specialization</td>
+                <td>Visiting Hours</td>
+            </tr>
+        </thead>
+        @foreach (DataRow dr in Model.Rows)
+        {
+    <tr>
+        <td>@dr["Doctor_ID"].ToString()</td>
+        <td>@dr["FirstName"].ToString()</td>
+        <td>@dr["LastName"].ToString()</td>
+        <td>@dr["Sex"].ToString()</td>
+        <td>@dr["Specialization"].ToString()</td>
+        <td>@dr["VisitingHours"].ToString()</td>
+    </tr>
+        }
+    </table>
+
+</body>
+
+

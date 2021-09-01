@@ -1,0 +1,32 @@
+﻿@using System.Data
+@using System.Data.SqlClient
+@model System.Data.DataTable
+@{
+    ViewBag.Title = "Cancel";
+}
+<style>
+    .bg {
+        font-size: medium;
+        background-image: url('../../clinic3.jfif');
+        height: 100%;
+        width: 100%;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        color: darkblue;
+        text-align: center;
+    }
+</style>
+
+<center><b><h3>Cancel Appointment</h3></center></b><br/>
+<body class="bg">
+    <form method="post" action=@Url.Action("CancelApp")>
+        Appointment ID   : <input type="text" name="txt_Aid" value="@Model.Rows[0]["Appointment_ID"]" required /><br /><br />
+        Patient ID       : <input type="text" name="txt_Pid" value="@Model.Rows[0]["Patient_Id"]" required /><br /><br />
+        Visit Date       : <input type="datetime" name="txt_Vdate" value="@Model.Rows[0]["VisitDate"]" required /><br /><br />
+        Appointment List : <input type="text" name="txt_AppList" value="@Model.Rows[0]["AppointmentTime"]" required /> <br /><br />
+        <input type="submit" value="Cancel Appointment" name="action" />
+    </form>
+</body>
+
+

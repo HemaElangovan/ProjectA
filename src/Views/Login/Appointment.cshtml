@@ -1,0 +1,52 @@
+﻿@using System.Data
+@using System.Data.SqlClient
+@model System.Data.DataTable
+
+@{
+    ViewBag.Title = "Appointment";
+}
+
+<center><b><h2 style="color:darkviolet">APPOINTMENT DETAILS</h2></b></center>
+<style>
+    .bg {
+        font-size: medium;
+        height: 100%;
+        width: 100%;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        color: darkblue;
+        text-align: center;
+        background-color: lightskyblue;
+        background-image: url('../../clinic3.jfif');
+    }
+</style>
+<body class="bg">
+    <table align="center" border="2" cellpadding="2" width="1000px">
+        <thead style="background-color:cadetblue;color:white ;">
+            <tr>
+                <td>Appointment No</td>
+                <td>Patient_Id</td>
+                <td>Specialization</td>
+                <td>Doctor Name</td>
+                <td>Visiting Date</td>
+                <td>Appointment Time</td>
+            </tr>
+        </thead>
+        @foreach (DataRow dr in Model.Rows)
+        {
+            <tr>
+                <td>@dr["Appointment_ID"].ToString()</td>
+                <td>@dr["Patient_Id"].ToString()</td>
+                <td>@dr["Specialization"].ToString()</td>
+                <td>@dr["DoctorName"].ToString()</td>
+                <td>@dr["Visit_Date"].ToString()</td>
+                <td>@dr["Appointment_Time"].ToString()</td>               
+                <td>@Html.ActionLink("Cancel Appointment", "Cancel", new { aid = dr["Appointment_ID"].ToString()})</td>
+            </tr>
+        }   
+    </table>
+    
+    <a align="center" href="~/Login/Schedule">Schedule Appointment</a>
+</body>
+

@@ -1,0 +1,65 @@
+﻿@using System.Data
+@using System.Data.SqlClient
+@model System.Data.DataTable
+
+@{
+    ViewBag.Title = "AddPatient";
+}
+
+<center><h3>ADD PATIENT</h3></center>
+<br />
+<style>
+    .bg {
+        font-size: larger;
+        height: 100%;
+        width: 100%;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        color: darkblue;
+        text-align: center;
+        background-color: lightskyblue;
+        background-image: url('../../clinic3.jfif');
+    }
+</style>
+<body class="bg">
+    <form id="insert" method="post" action=@Url.Action("AddPatDetails")>
+        First Name      : <input type="text" name="txt_fname" required /> <br /><br />
+        Last Name       : <input type="text" name="txt_lname" required /><br /><br />
+        Sex             : <div class="btn-group" name="Choice">
+            <input id="Gender" value="Male" type="radio" name="Choice" autocomplete="off" />Male
+            <input value="Female" type="radio" name="Choice" autocomplete="off" />Female
+            <input value="Others" type="radio" name="Choice" autocomplete="off" />Others
+        </div><br /><br />
+        Age             : <input type="text" name="txt_age" /><br required /><br />
+        Date of birth   : <input type="date" name="txt_dob" /><br required /><br />
+
+        <input type="submit" value="Submit" name="action" />
+    </form>
+    </br></br>
+    <table align="center" border="2" cellpadding="2">
+        <thead>
+            <tr>
+                <td>Patient_ID</td>
+                <td>First Name</td>
+                <td>Last Name</td>
+                <td>Gender</td>
+                <td>Age</td>
+                <td>Date Of Birth</td>
+            </tr>
+        </thead>
+        @foreach (DataRow dr in Model.Rows)
+        {
+            <tr>
+                <td>@dr["Patient_ID"].ToString()</td>
+                <td>@dr["FirstName"].ToString()</td>
+                <td>@dr["LastName"].ToString()</td>
+                <td>@dr["Sex"].ToString()</td>
+                <td>@dr["Age"].ToString()</td>
+                <td>@dr["Date_Of_Birth"].ToString()</td>
+            </tr>
+        }
+    </table>
+
+</body>
+

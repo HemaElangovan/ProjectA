@@ -1,0 +1,49 @@
+﻿@model Clinic_Management_System.Models.LoginModel
+
+
+<center><h3 style="color:darkviolet">SCHEDULE APPOINTMENT</h3></center>
+<style>
+    .bg {
+        font-size: medium;
+        height: 100%;
+        width: 100%;
+        background-repeat: no-repeat;
+        background-size: cover;
+        color: darkblue;
+        background-image: url('../../clinic3.jfif');
+        text-align: center;
+    }
+    
+</style>
+<body class="bg">
+    
+        <form method="post" action=@Url.Action("ScheduleAppointment")>
+            <div>
+                Patient ID       : <input type="text" name="txt_Pid" required/><br /><br />
+                Specialization   :
+                <select value="select" name="dept" class="Dept" required>
+                    <option value="none">Select Department</option>
+                    <option name="dept" value="General">General</option>
+                    <option name="dept" value="InternalMedicine">Internal Medicine</option>
+                    <option name="dept" value="Pediatrics">Pediatrics</option>
+                    <option name="dept" value="Orthopedics">Orthopedics</option>
+                    <option name="dept" value="Ophthalmology">Ophthalmology</option>
+                </select><br /><br />
+                @*<input type="text" name="txt_dname" /> <br /><br />*@
+                <div class="doc">
+                    Doctor Name      : @Html.DropDownListFor(m => m.FirstName, Model.DocList, "Select")
+                    <br />
+                    <br />
+                </div>
+                @*@Html.DropDownListFor(x => x.DocList, Model.DocList.Select(x => new SelectListItem { Text = x.ToString(), Value = x.ToString(),
+                Selected = x.ToString().Equals(selectedOne.ToString()) }))*@
+
+
+                Visit Date       : <input type="date" name="txt_Vdate" required/><br /><br />
+                Appointment Time : <input type="time" name="txt_AppTime" required/> <br /><br />
+                <input type="submit" value="Submit" name="action" />
+            </div>
+        </form>
+    
+</body>
+

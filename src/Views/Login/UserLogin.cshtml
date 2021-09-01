@@ -1,0 +1,60 @@
+﻿@using System.Data
+@using System.Data.SqlClient
+@model System.Data.DataTable
+
+@{
+    ViewBag.Title = "UserLogin";
+}
+</br>
+    <head>
+        <style type="text/css">
+            .bg {
+                background-image: url('../../clinic3.jfif');
+                background-position: center;
+                background-repeat: no-repeat;
+                background-size: cover;
+                color: #5a5656;
+                font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+                font-size: 16px;                
+                line-height: 1.5em;
+                font-size: medium;
+                height: 100%;
+                width: 100%;
+                background-position: center;
+                text-align: center;
+            }
+
+            @*<style >
+            .bg {
+                background-image: url('bg4.jfif');            
+                background-repeat: no-repeat;
+                background-size: cover;
+                color: darkblue;                
+            }
+        </style>*@
+        </style>
+    </head>
+    <b><center><h2 style="color:darkviolet">Staff Login</h2></center></b>
+<br/>
+    <body class="bg">
+        <form id="Login"  method="post" align="center" action=@Url.Action("StaffLogin")>
+            <fieldset>
+                <b><table border="2" cellpadding="2">
+                    <p>
+                        User Name :
+                        <input type="text" placeholder="Enter username" name="txt_uname" required />
+                        <br />
+                        <br />
+                    </p>
+                    <p>
+                        Password  :
+                        <input type="password" placeholder="Enter password" name="txt_pwd" required />
+                        <br />
+                        <br />
+                    </p>
+                </table></b>
+            </fieldset>
+            <input type="submit" value="Submit" name="action" />
+        </form>
+    </body>
+
